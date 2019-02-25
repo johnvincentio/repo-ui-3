@@ -1,0 +1,207 @@
+/* ----------------------------------- */
+/* Variables */
+/* ----------------------------------- */
+/* ----------------------------------- */
+/* Mixins */
+/* ----------------------------------- */
+/* ----------------------------------- */
+/* Basic setup */
+/* ----------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: #fff;
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* ----------------------------------- */
+/* Main Image Section */
+/* ----------------------------------- */
+.jumbotron {
+  min-width: 100%;
+  height: 500px;
+  background: url("http://lh4.ggpht.com/w-9ruGKvMxcvzBn4hhRICkisIP5U05xD2bNthIWO8hb62h24zcMgj76LTdLA15sS8CFh9AQHioRLgNisR0TnftamgGmY=s0") center;
+  background-size: cover;
+  border-radius: 0 !important;
+}
+.jumbotron:hover {
+  cursor: pointer;
+}
+
+#my-brand {
+  font-size: 26px;
+  font-weight: 500;
+  color: #625655;
+}
+
+/* ----------------------------------- */
+/* Collection section */
+/* ----------------------------------- */
+/*
+<div class="outer-box col-xs-12 col-sm-6 col-md-4 col-lg-3">\
+    <figure class="box js--select-item" data-item-id="{{1}}">\
+        <div><img src="{{5}}" alt="{{6}}"></div>\
+        <figcaption class="caption">\
+            <h2 class="text-center">{{2}}</h2>\
+            <p class="text-center">{{3}}</p>\
+        </figcaption>\
+    </figure>\
+</div>';
+*/
+/*
+https://stackoverflow.com/questions/14562457/center-oversized-image-in-div
+
+*/
+.collection {
+  background-color: #e4e1e1;
+  text-align: center;
+}
+.collection .outer-box {
+  margin-top: 20px;
+}
+.collection .outer-box figure {
+  padding: 0;
+  margin: 0;
+}
+.collection .outer-box figure div {
+  height: 300px;
+  width: 100%;
+  overflow: hidden;
+}
+.collection .outer-box figure div img {
+  height: 100%;
+  width: auto;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+.collection .outer-box figure div img:hover {
+  cursor: pointer;
+  height: 102%;
+}
+.collection .outer-box figure figcaption h2 {
+  margin: 0;
+  padding-top: 10px;
+  font-weight: 400;
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.collection .outer-box figure figcaption p {
+  margin: 0;
+  padding-top: 6px;
+  font-weight: 700;
+  font-size: 17px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ----------------------------------- */
+/* Details section */
+/* ----------------------------------- */
+.details .outer-box {
+  margin-top: 80px;
+}
+.details .outer-box img:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.details .outer-box .art-header h2 {
+  font-size: 28px;
+  margin-top: 40px;
+}
+.details .outer-box .art-header p {
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 25px;
+}
+.details .outer-box .art-details {
+  margin-top: 20px;
+  font-size: 18px;
+}
+.details .outer-box .art-details p {
+  line-height: 20px;
+}
+.details .outer-box .art-details .artist {
+  margin-top: 35px;
+}
+.details .outer-box .art-details .artist .artist-name {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+/* ----------------------------------- */
+/* Events section */
+/* ----------------------------------- */
+.events div {
+  margin-bottom: 25px;
+}
+.events .tour-description {
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+.events .tour-description a {
+  padding-left: 10px;
+}
+.events .tour-time a {
+  padding-left: 30px;
+}
+
+/* ----------------------------------- */
+/* Responsive */
+/* ----------------------------------- */
+@media only screen and (max-width: 640px) {
+  .events .tour-time a {
+    display: block;
+    padding-left: 0;
+  }
+}
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  /*--- Mobile portrait ---*/
+  #my-brand {
+    font-size: 22px;
+  }
+
+  .jumbotron {
+    height: 300px;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 595px) {
+  /*--- Mobile landscape ---*/
+}
+@media only screen and (min-width: 595px) and (max-width: 690px) {
+  /*--- Small tablet portrait ---*/
+}
+@media only screen and (min-width: 690px) and (max-width: 800px) {
+  /*--- Tablet portrait ---*/
+}
+@media only screen and (min-width: 800px) and (max-width: 1024px) {
+  /*--- Small tablet landscape ---*/
+}
+@media only screen and (min-width: 1024px) and (max-width: 1224px) {
+  /*--- Tablet landscape --- */
+}
+@media only screen and (min-width: 1224px) {
+  /*--- Laptop --- */
+}
+@media only screen and (min-width: 1824px) {
+  /*--- Large Screen --- */
+}
+/* Big tablet to 1200px (widths smaller than 1140px row) */
+/* Small tablet to big tablet: from 768px to 1023px */
+/* Small phones to small tablets; from 481px to 767px */
+/* Small phones from 0 to 480px  */
+
+/*# sourceMappingURL=main.css.map */
