@@ -1,0 +1,51 @@
+#!/bin/sh
+#
+# script to create and start a node http server
+#
+# ref:
+# https://www.npmjs.com/package/http-server
+#
+#
+#  Installed http-server globally
+#
+# npm install http-server -g
+#
+
+echo "Script to create and start a node http server"
+#PARS="$*"
+#echo "Pars are $PARS"
+#echo "number of params $#"
+
+echo " "
+if [ "$#" -lt 2 ]; then
+    echo "Usage: run-http-server port public_files_directory (relative to pwd)"
+    exit 1
+fi
+#
+PORT=$1
+if [ -z "$PORT" ]; then
+    echo "Usage: run-http-server port public_files_directory (relative to pwd)"
+    exit 1
+fi
+#
+CURRENT_DIR="`pwd`"
+if [ ! -z "$2" ]; then
+    CURRENT_DIR="`pwd`/$2"
+fi
+
+#
+# starting the server
+#
+pwd
+echo "Starting the http-server, caching turned off"
+echo "Port $PORT"
+echo "serving files from: $CURRENT_DIR"
+echo ""
+http-server -p $PORT -c-1 $CURRENT_DIR
+
+#
+# done
+#
+echo " "
+echo "Completed"
+#

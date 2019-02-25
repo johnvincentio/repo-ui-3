@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>My Application Title</title>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<style>
+		h3 {
+			color: blue;
+		}
+	</style>
+</head>
+
+<body>
+	<h3>Welcome</h3>
+	<div id="shadowHost">
+		<span id="child">This is not part of the shadow DOM</span>
+	</div>
+
+	<template id="news-widget">
+		<style type="text/css">
+			h3 {
+				color: green;
+			}
+		</style>
+		<h3>News Widget</h3>
+	</template>
+
+	<script>
+		var shadowHost = document.getElementById("shadowHost");
+		// var shadowRoot = shadowHost.createShadowRoot();
+		var shadowRoot = shadowHost.attachShadow({ mode: 'open' });
+		var shadowChild = document.createElement("span");
+
+		shadowChild.innerHTML = document.getElementById("news-widget").innerHTML;
+		shadowRoot.appendChild(shadowChild);
+	</script>
+
+</body>
+
+</html>
