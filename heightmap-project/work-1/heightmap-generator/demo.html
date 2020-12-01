@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Heightmap generator</title>
+    <meta name="description" content="Heightmap generator" />
+    <meta name="author" content="clemDelp" />
+    <link rel="stylesheet" href="demo.css?v=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <a href="https://github.com/ClemDelp/heightmap-generator">
+      <img
+        style="position: absolute; top: 0; right: 0; border: 0;"
+        src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67"
+        alt="Fork me on GitHub"
+        data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+      />
+    </a>
+    Size: <input type="text" name="size" value="250" />
+    Height:
+    <input
+      type="range"
+      name="heightRangeInput"
+      min="1"
+      max="11"
+      value="10"
+      onchange="updateRangeText(this.value, 'heightRangeInput')"
+    /><span id="heightRangeInput">10</span> Revert:
+    <input type="checkbox" name="revert" />
+    <input type="button" onClick="generate()" value="generate" />
+    <br />
+    <br />
+    <canvas id="heightmapColor" width="500" height="500"></canvas>
+    <canvas id="heightmapBlackAndWhite" width="500" height="500"></canvas>
+    <script src="heightmap.js"></script>
+    <script>
+      const updateRangeText = function (val, id) {
+        $('#' + id).html(val);
+      };
+      const colors = [
+        '#0000FF',
+        '#4A86E8',
+        '#C9DAF8',
+        '#CFE2F3',
+        '#FCE5CD',
+        '#F9CB9C',
+        '#F6B26B',
+        '#6AA84F',
+        '#38761D',
+        '#B45F06',
+        '#783F04',
+      ].reverse();
+      const myBlack = '#ffffff';
+      const generate = function () {
+        console.log('>>> generate');
+        const size = parseInt($('input[name=size]').val());
+        const height = parseInt($('input[name=heightRangeInput]').val());
+        const revert = $('input[name=revert]').is(':checked');
+        const noise = generateNoise(size, height, revert, 10);
+        // COLOR CANVAS
+        const canvasColor = document.getElementById('heightmapColor');
+        const contextColor = canvasColor.getContext('2d');
+        contextColor.clearRect(0, 0, canvasColor.width, canvasColor.height);
+        // BlackAndWhite CANVAS
+        const canvasBlackAndWhite = document.getElementById(
+          'heightmapBlackAndWhite'
+        );
+        const contextBlackAndWhite = canvasBlackAndWhite.getContext('2d');
+        contextBlackAndWhite.clearRect(
+          0,
+          0,
+          canvasBlackAndWhite.width,
+          canvasBlackAndWhite.height
+        );
+        // FILL CANVAS
+        // for(x = 0; x < noise.length; x++) {
+        //   for(y = 0; y < noise[x].length; y++) {
+        //     // COLOR
+        //     var val = noise[x][y]
+        //     var color = Math.round((255 * val))
+        //     contextColor.fillStyle = "rgb(" + color + ", " + color + ", " + color + ")"
+        //     contextColor.fillRect(x, y, 1, 1)
+        //     // BlackAndWhite
+        //     var index = Math.round(val * 10) - 1
+        //     if (index < 0) index = 0
+        //     contextBlackAndWhite.fillStyle = colors[index]
+        //     contextBlackAndWhite.fillRect(x, y, 1, 1)
+        //   }
+        // }
+        console.log('fill with ', myBlack);
+        for (x = 0; x < noise.length; x++) {
+          for (y = 0; y < noise[x].length; y++) {
+            contextBlackAndWhite.fillStyle = myBlack;
+            contextBlackAndWhite.fillRect(x, y, 1, 1);
+          }
+        }
+        console.log('<<< generate');
+      };
+      console.log('before generate');
+      generate();
+      console.log('after generate');
+    </script>
+  </body>
+</html>

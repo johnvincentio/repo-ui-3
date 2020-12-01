@@ -4,9 +4,9 @@
   "description": "change-this",
   "main": "index.js",
   "scripts": {
-	"eslint-check": "eslint --print-config . | eslint-config-prettier-check",
-	"lint": "eslint 'src/**/*.{js,jsx}' --quiet",
-	"eslint-versions": "npm info eslint-config-airbnb@latest peerDependencies",
+    "eslint-check": "eslint --print-config . | eslint-config-prettier-check",
+    "lint": "eslint 'src/**/*.{js,jsx}' --quiet",
+    "eslint-versions": "npm info eslint-config-airbnb@latest peerDependencies",
     "audit": "npm audit",
     "USELESS": "nothing"
   },
@@ -30,5 +30,9 @@
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4"
+  },
+  "dependencies": {
+    "pngjs": "^5.0.0",
+    "pnglib-es6": "^1.0.1"
   }
 }
